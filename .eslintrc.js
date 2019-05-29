@@ -1,20 +1,22 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: 'react',
+  extends: ['eslint:recommended', 'react'],
   env: {
     browser: true,
     node: true,
     jest: true
   },
   rules: {
+    'comma-dangle': ['error', 'never'],
     'indent': ['error', 2],
     'linebreak-style': ['error', 'unix'],
-    'quotes': ['error', 'single'],
-    'semi': ['error', 'always'],
-    'comma-dangle': ['error', 'never'],
     'no-cond-assign': ['error', 'always'],
     'no-console': 'off',
-    "space-before-function-paren": ["error", "never"]
+    'no-var': 'error',
+    'prefer-const': 'error',
+    'quotes': ['error', 'single'],
+    'semi': ['error', 'always'],
+    'space-before-function-paren': ['error', 'never']
   },
   settings: {
     react: {
