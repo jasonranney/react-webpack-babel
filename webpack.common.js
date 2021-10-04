@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
     app: './src/index.js'
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       favicon: './src/images/favicon.ico',
       title: 'React App',
@@ -21,7 +21,6 @@ module.exports = {
       chunkFilename: '[id].[hash].css'
     }),
     // new webpack.HotModuleReplacementPlugin(), // Hot Module Replacement
-    new webpack.HashedModuleIdsPlugin()
   ],
   output: {
     filename: '[name].[contenthash].js',
@@ -30,6 +29,7 @@ module.exports = {
     publicPath: '/'
   },
   optimization: {
+    moduleIds: 'deterministic',
     usedExports: true, // Tree Shaking
     runtimeChunk: 'single', // Extracting Boilerplate
     splitChunks: {
