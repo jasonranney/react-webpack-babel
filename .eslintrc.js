@@ -1,6 +1,6 @@
 module.exports = {
   parser: 'babel-eslint',
-  extends: ['eslint:recommended', 'react'],
+  extends: ['eslint:recommended', 'react-app'],
   env: {
     browser: true,
     node: true,
