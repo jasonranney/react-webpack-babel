@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -10,6 +11,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    new ESLintPlugin(),
     new HtmlWebpackPlugin({
       favicon: './src/images/favicon.ico',
       title: 'React App',
@@ -19,7 +21,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css'
-    }),
+    })
     // new webpack.HotModuleReplacementPlugin(), // Hot Module Replacement
   ],
   output: {
@@ -48,7 +50,7 @@ module.exports = {
       {
         test: /\.(jsx?|tsx?)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'ts-loader', 'eslint-loader']
+        use: ['babel-loader', 'ts-loader']
       },
       {
         test: /\.s?css$/,
